@@ -5,6 +5,9 @@ fetch("chingling.json")
     .then(animation => {
         let frameIndex = 0;
 
+        // Keep the entire animation container transparent
+        animationElement.style.backgroundColor = "transparent";
+
         function renderFrame() {
             const frame = animation.frames[frameIndex];
 
@@ -17,22 +20,32 @@ fetch("chingling.json")
 
                     span.textContent = cell.g;
 
+                    // Keep the ASCII foreground/text color
                     span.style.color =
                         `rgb(${cell.fg[0]}, ${cell.fg[1]}, ${cell.fg[2]})`;
 
-                    span.style.backgroundColor =
-                        `rgb(${cell.bg[0]}, ${cell.bg[1]}, ${cell.bg[2]})`;
+                    // Remove the black background from each character
+                    span.style.backgroundColor = "transparent";
 
                     animationElement.appendChild(span);
                 }
 
-                animationElement.appendChild(document.createElement("br"));
+                animationElement.appendChild(
+                    document.createElement("br")
+                );
             }
 
-            const delay = animation.delays[frameIndex];
+            // Prevent the 3000ms pause at the end
+            const isLastFrame =
+                frameIndex === animation.frames.length - 1;
+
+            const delay = isLastFrame
+                ? 30
+                : (animation.delays[frameIndex] ?? 30);
 
             frameIndex++;
 
+            // Loop back to the beginning
             if (frameIndex >= animation.frames.length) {
                 frameIndex = 0;
             }
