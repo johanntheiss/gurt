@@ -13,8 +13,8 @@ fetch("spinningcubes.json")
 
         let frameIndex = 0;
 
-        const fontSize = 6;
-        const lineHeight = 6;
+        const fontSize = 7;
+        const lineHeight = 7;
 
         ctx.font = `${fontSize}px monospace`;
         ctx.textBaseline = "top";
