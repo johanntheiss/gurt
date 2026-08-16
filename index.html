@@ -36,21 +36,29 @@
         .hero-content {
             position: relative;
             z-index: 2;
+            /* approximately matches the rendered width of GURT */
+            width: 455px;
+            max-width: 90vw;
         }
-
+        
         .hero h1 {
             font-family: Arial, sans-serif;
             font-size: 120px;
             margin: 0;
             letter-spacing: 28px;
+            /* compensates for the extra spacing after the final T */
+            text-indent: 28px;
+            white-space: nowrap;
         }
-
+        
         .hero p {
             font-size: 22px;
             color: #FFFFFF;
-            margin-top: 12px;
+            margin: 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
         }
-
         /* ASCII ANIMATION */
         #ascii-animation {
             position: absolute;
@@ -105,7 +113,12 @@
             <!-- Hero text -->
             <div class="hero-content">
                 <h1>GURT</h1>
-                <p>Global&ensp;&ensp;Unified&ensp;&ensp;Robotics&ensp;&ensp;Technology</p>
+                <p>
+                  <span>Global</span>
+                  <span>Unified</span>
+                  <span>Robotics</span>
+                  <span>Technology</span>
+                </p>
             </div>
         </section>
 
