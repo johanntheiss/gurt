@@ -36,7 +36,7 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            /* approximately matches the rendered width of GURT */
+        
             width: 455px;
             max-width: 90vw;
         }
@@ -45,19 +45,31 @@
             font-family: Arial, sans-serif;
             font-size: 120px;
             margin: 0;
-            letter-spacing: 28px;
-            /* compensates for the extra spacing after the final T */
-            text-indent: 28px;
-            white-space: nowrap;
+        
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        
+            width: 100%;
+        }
+        
+        .hero h1 span {
+            text-align: center;
         }
         
         .hero p {
             font-size: 22px;
             color: #FFFFFF;
+        
             margin: 12px 0 0;
-            display: flex;
-            justify-content: space-between;
+        
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        
             width: 100%;
+        }
+        
+        .hero p span {
+            text-align: center;
         }
         /* ASCII ANIMATION */
         #ascii-animation {
@@ -112,14 +124,19 @@
 
             <!-- Hero text -->
             <div class="hero-content">
-                <h1>GURT</h1>
-                <p>
-                  <span>Global</span>
-                  <span>Unified</span>
-                  <span>Robotics</span>
-                  <span>Technology</span>
-                </p>
-            </div>
+            <h1>
+                <span>G</span>
+                <span>U</span>
+                <span>R</span>
+                <span>T</span>
+            </h1>
+            <p>
+                <span>Global</span>
+                <span>Unified</span>
+                <span>Robotics</span>
+                <span>Technology</span>
+            </p>
+        </div>
         </section>
 
         <!-- ABOUT -->
