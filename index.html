@@ -70,47 +70,15 @@
         /* ASCII ANIMATION */
 
         #ascii-animation {
-
             position: absolute;
-
             top: 50%;
             left: 50%;
-
             transform: translate(-50%, -50%);
-
+        
             z-index: 1;
-
-
-            font-family:
-                "Courier New",
-                Courier,
-                monospace;
-
-            font-size: 9px;
-            line-height: 9px;
-
-            white-space: pre;
-
-
-            /* Remove default <pre> spacing */
-
-            margin: 0;
-            padding: 0;
-
-
-            /* No background behind the ASCII */
-
+        
             background: transparent;
-
-
-            /* Animation can't interfere with mouse clicks */
-
             pointer-events: none;
-
-
-            /* Keep browser text layout consistent */
-
-            font-weight: normal;
         }
 
 
@@ -173,7 +141,7 @@
 
             <!-- ASCII animation background -->
 
-            <pre id="ascii-animation"></pre>
+            <canvas id="ascii-animation"></canvas>
 
 
             <!-- Hero text -->
