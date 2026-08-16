@@ -1,4 +1,5 @@
-const animationElement = document.getElementById("ascii-animation");
+const canvas = document.getElementById("ascii-animation");
+const ctx = canvas.getContext("2d");
 
 fetch("spinningcubes.json")
     .then(response => {
@@ -9,60 +10,67 @@ fetch("spinningcubes.json")
         return response.json();
     })
     .then(animation => {
+
         let frameIndex = 0;
 
-        // Keep the overall animation background transparent
-        animationElement.style.backgroundColor = "transparent";
+        const fontSize = 9;
+        const lineHeight = 9;
+
+        ctx.font = `${fontSize}px monospace`;
+        ctx.textBaseline = "top";
+
+        // Determine width of one monospace character
+        const charWidth = ctx.measureText("M").width;
+
+        // Set canvas to match the ASCII animation dimensions
+        canvas.width = Math.ceil(animation.cols * charWidth);
+        canvas.height = animation.rows * lineHeight;
+
+        // Canvas width/height resets context settings
+        ctx.font = `${fontSize}px monospace`;
+        ctx.textBaseline = "top";
 
         function renderFrame() {
+
             const frame = animation.frames[frameIndex];
 
-            // Clear previous frame
-            animationElement.innerHTML = "";
+            // Clear canvas while keeping it transparent
+            ctx.clearRect(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
 
-            const fragment = document.createDocumentFragment();
+            for (let rowIndex = 0; rowIndex < frame.cells.length; rowIndex++) {
 
-            for (const row of frame.cells) {
+                const row = frame.cells[rowIndex];
 
-                for (const cell of row) {
+                for (let colIndex = 0; colIndex < row.length; colIndex++) {
 
-                    // Spaces do not need their own span.
-                    // Using a text node reduces the amount of HTML
-                    // the browser has to create every frame.
+                    const cell = row[colIndex];
+
+                    // Don't waste time drawing blank spaces
                     if (cell.g === " ") {
-                        fragment.appendChild(
-                            document.createTextNode(" ")
-                        );
                         continue;
                     }
 
-                    const span = document.createElement("span");
-
-                    span.textContent = cell.g;
-
-                    // Use the foreground color stored in the JSON
-                    span.style.color =
+                    ctx.fillStyle =
                         `rgb(${cell.fg[0]}, ${cell.fg[1]}, ${cell.fg[2]})`;
 
-                    // Ignore the JSON background color
-                    span.style.backgroundColor = "transparent";
-
-                    fragment.appendChild(span);
+                    ctx.fillText(
+                        cell.g,
+                        colIndex * charWidth,
+                        rowIndex * lineHeight
+                    );
                 }
-
-                fragment.appendChild(
-                    document.createTextNode("\n")
-                );
             }
 
-            animationElement.appendChild(fragment);
-
-            // Use the timing from the JSON
-            const delay = animation.delays[frameIndex] ?? 50;
+            const delay =
+                animation.delays[frameIndex] ?? 50;
 
             frameIndex++;
 
-            // Continuously loop the animation
             if (frameIndex >= animation.frames.length) {
                 frameIndex = 0;
             }
@@ -73,5 +81,8 @@ fetch("spinningcubes.json")
         renderFrame();
     })
     .catch(error => {
-        console.error("Failed to load ASCII animation:", error);
+        console.error(
+            "Failed to load ASCII animation:",
+            error
+        );
     });
