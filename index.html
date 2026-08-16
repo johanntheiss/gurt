@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GURT Enterprises</title>
+  <title>GURT Enterprises</title>
 
     <style>
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -13,10 +9,12 @@
             color: white;
         }
 
+
         header {
             padding: 25px 50px;
             border-bottom: 1px solid #333333;
         }
+
 
         .logo {
             font-size: 28px;
@@ -24,146 +22,280 @@
             letter-spacing: 4px;
         }
 
+
+        /* HERO SECTION */
+
         .hero {
             min-height: 70vh;
+
             position: relative;
+
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+
             text-align: center;
+
             overflow: hidden;
         }
+
+
+        /* GURT text sits above the animation */
 
         .hero-content {
             position: relative;
             z-index: 2;
         }
 
+
         .hero h1 {
             font-family: Arial, sans-serif;
             font-size: 120px;
+
             margin: 0;
+
             letter-spacing: 28px;
         }
+
 
         .hero p {
             font-size: 20px;
             color: #aaaaaa;
+
             margin-top: 20px;
         }
+
+
+        /* ASCII ANIMATION */
+
+        #ascii-animation {
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            z-index: 1;
+
+
+            font-family:
+                "Courier New",
+                Courier,
+                monospace;
+
+            font-size: 9px;
+            line-height: 9px;
+
+            white-space: pre;
+
+
+            /* Remove default <pre> spacing */
+
+            margin: 0;
+            padding: 0;
+
+
+            /* No background behind the ASCII */
+
+            background: transparent;
+
+
+            /* Animation can't interfere with mouse clicks */
+
+            pointer-events: none;
+
+
+            /* Keep browser text layout consistent */
+
+            font-weight: normal;
+        }
+
+
+        /* GENERAL SECTIONS */
 
         section {
             padding: 80px 15%;
             border-top: 1px solid #333333;
         }
 
+
         section h2 {
             font-size: 32px;
         }
 
+
         section p {
             color: #bbbbbb;
             line-height: 1.6;
+
             max-width: 700px;
         }
 
+
         footer {
             text-align: center;
+
             padding: 30px;
+
             color: #777777;
+
             border-top: 1px solid #333333;
         }
 
-        #ascii-animation {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
 
-            z-index: 1;
-
-            font-family: monospace;
-            font-size: 18px;
-            line-height: 18px;
-            white-space: pre;
-
-            margin: 0;
-            overflow: hidden;
-            background: transparent;
-
-            pointer-events: none;
-        }
     </style>
 </head>
 
+
 <body>
 
+
     <header>
-        <div class="logo">GURT</div>
+
+        <div class="logo">
+            GURT
+        </div>
+
     </header>
+
+
 
     <main>
 
+
+        <!-- HERO -->
+
         <section class="hero">
+
+
+            <!-- ASCII animation background -->
 
             <pre id="ascii-animation"></pre>
 
+
+            <!-- Hero text -->
+
             <div class="hero-content">
+
                 <h1>GURT</h1>
-                <p>Global Unified Robotics Technology</p>
+
+                <p>
+                    Global Unified Robotics Technology
+                </p>
+
             </div>
+
 
         </section>
 
+
+
+        <!-- ABOUT -->
+
         <section id="about">
-            <h2>About GURT</h2>
+
+            <h2>
+                About GURT
+            </h2>
+
 
             <p>
+
                 GURT Enterprises is focused on developing and exploring
                 robotics technology through innovative engineering and
                 unified systems.
+
             </p>
 
-            <img src="images/logo.png" alt="GURT Logo" width="300">
+
+            <img
+                src="images/logo.png"
+                alt="GURT Logo"
+                width="300"
+            >
+
 
         </section>
+
+
+
+        <!-- CONTACT -->
 
         <section id="contact">
-            <h2>Contact</h2>
+
+
+            <h2>
+                Contact
+            </h2>
+
 
             <p>
+
                 Chief Executive Officer<br>
+
                 Johann Theiss<br>
+
                 CEO@gurt.enterprises
+
             </p>
 
+
             <p>
+
                 Chief Operating Officer<br>
+
                 Connor Shamaly<br>
+
                 COO@gurt.enterprises
+
             </p>
 
+
             <p>
+
                 Chief Technology Officer<br>
+
                 Joshua Priddy<br>
+
                 CTO@gurt.enterprises
+
             </p>
 
+
             <p>
+
                 Chief Financial Officer<br>
+
                 Jose Gomez Toledo<br>
+
                 CFO@gurt.enterprises
+
             </p>
+
+
         </section>
+
 
     </main>
 
+
+
     <footer>
+
         © 2026 GURT Enterprises
+
     </footer>
+
+
+
+    <!-- ASCII animation script -->
 
     <script src="script.js"></script>
 
+
 </body>
+
 </html>
