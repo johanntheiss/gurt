@@ -74,7 +74,6 @@ fetch("media/spinningcube.json")
             if (frameIndex >= animation.frames.length) {
                 frameIndex = 0;
             }
-
             setTimeout(renderFrame, delay);
         }
 
