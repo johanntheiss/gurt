@@ -1,7 +1,7 @@
 const canvas = document.getElementById("ascii-animation");
 const ctx = canvas.getContext("2d");
 
-fetch("media/spinningcube.json")
+fetch("/media/spinningcube.json")
     .then(response => {
         if (!response.ok) {
             throw new Error(`HTTP error: ${response.status}`);
